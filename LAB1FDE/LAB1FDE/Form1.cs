@@ -41,32 +41,22 @@ namespace LAB1FDE
 		{
 			if (number == colorsForGraphics.Count) number = 0;
 			pen1.Color = colorsForGraphics[number++];
+
+			double newRadius = (double)del * radius;
 			double x = (double)(x0);
 			double y = (double)(y0);
 			double x2 = x;
 			double y2 = y;
+			double r = newRadius / 2.0 / Math.PI / (double)n;
 
-			double newRadius = (double)del * radius;
-
-			user_Graphics.DrawLine(pen1, (float)x0, (float)y0, (float)(x0 + newRadius), (float)(y0));
-
-			/*double t = degree * Math.PI / 180.0;
-			double r = t / 2.0;
-			double anglef = 0.1;
-
-			for (int i = 0; i < n; i++)
+			for (double t = degree; t <= (2.0 * Math.PI) * (double)n; t += 0.1)
 			{
-				while (t <)
-				{ 
-					x2 = x0 + r * Math.Cos(t);
-					y2 = y0 + r * Math.Sin(t);
-					user_Graphics.DrawLine(pen1, (float)x, (float)y, (float)x2, (float)y2);
-					x = x2;
-					y = y2;
-					t += anglef;
-					r = t / 2.0; 
-				}
-			}*/
+				x2 = x0 + r * t * Math.Cos(t);
+				y2 = y0 + r * t * Math.Sin(t);
+				user_Graphics.DrawLine(pen1, (float)x, (float)y, (float)x2, (float)y2);
+				x = x2;
+				y = y2;
+			}
 
 			pictureBox1.Image = canvas;
 		}
@@ -96,6 +86,24 @@ namespace LAB1FDE
 			}
 
 			degree = Convert.ToDouble(textBox3.Text);
+
+			if (degree < 0.0)
+			{
+				while (degree < 0.0)
+				{
+					degree += 360.0;
+				}
+			}
+
+			if (degree >= 360.0)
+			{
+				while (degree >= 360.0)
+				{
+					degree -= 360.0;
+				}
+			}
+
+			degree *= 0.017;
 			check3 = true;
 			if (check1 && check2 && check3) button2.Enabled = true;
 		}
@@ -104,7 +112,7 @@ namespace LAB1FDE
 		{
 			InitializeComponent();
 
-			white25 = Color.FromArgb(0, 255, 255, 255);
+			white25 = Color.FromArgb(0);
 			brushWhite25 = new SolidBrush(white25);
 
 			canvas = new Bitmap(ClientRectangle.Width, ClientRectangle.Height);
