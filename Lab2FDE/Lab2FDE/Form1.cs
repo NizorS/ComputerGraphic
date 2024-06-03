@@ -238,9 +238,10 @@ namespace Lab2FDE
 			double f = Convert.ToDouble(textBox2.Text), Phi = Convert.ToDouble(textBox1.Text) * 0.17;
 
 			T[0, 0] = 1.0;
-			T[1, 1] = 1.0;
+			//T[1, 1] = 1.0;
+			T[2, 2] = 1.0;
 			T[2, 0] = f * Math.Cos(Phi);
-			T[2, 1] = f * Math.Sin(Phi);
+			T[1, 2] = f * Math.Sin(Phi);
 			T[3, 3] = 1.0;
 
 			//drawProj(multiplicateMatrix(m1, T));
