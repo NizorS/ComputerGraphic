@@ -144,7 +144,7 @@ namespace Lab2FDE
 			this.MinimumSize = new System.Drawing.Size(1200, 700);
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "3821Б1ПМмм1 Фомичев Дмитрий";
+			this.Text = "Сулаймонов Низор 3821Б1ПМмм1 Лаболаторная номер 2";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
